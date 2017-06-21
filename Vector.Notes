@@ -1,0 +1,43 @@
+This contains the notes from Vector class in Udacity.
+
+Operations:
+a. Addition - Adding the co-ordinates i.e (x1,y1) + (x2,y2) = (x1+x2,y1+y2)
+b. Subtraction - subtracting the co-ordinates i.e (x1,y1) - (x2,y2) = (x1-x2,y1-y2)
+c. Scalar multiplication - Multiplying the vector by const, multiply each coordinates.
+
+Vector Magnitude:
+   vmag = sqrt(x^2+y^2)
+   vmag = sqrt(v.v)
+
+   Unit vector of vector pointing in same direction: (magnitutde = 1)
+   normalizing a vector = v* 1/vmag
+
+   Zero vector, magnitude = 0 and has no direction.
+
+Dot product:
+
+v.w = vmag * wmag * cos(angle)
+v.w = v1w1 + v2w2 + v3w3 ...
+
+angleInRadians = arcos(v.w/vmag*wmag)
+
+abs(v.w) <= vmag*wmag
+
+if v.w = 0 and vmag and wmag are not 0 then they are perpendicular to each other.
+
+Parallel and orthogonal vectors:
+if angle = 0 or 180 it is paralles.
+if angle = 90 it is orthogonal
+
+
+v= vparallel + vperpendicular. ( parallel and perpendicular to another vector)
+
+vparallel is projection of v on b.
+vparallel = (v.ub)*ub  ( ub is unit vector in direction of b)
+
+
+Cross product:
+vxwmag = vmag*wmag*sin(theta)
+
+Area of parallelogram is magnitude of crossproduct.
+Area of the triange is magnitude of 1/2*magnitude of crossproduct
