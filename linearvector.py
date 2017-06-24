@@ -31,9 +31,12 @@ class Vector(object):
             raise TypeError("The Coordinates should be itterable")
 
     def __str__(self):
-        """This function provides the ability to print the vector
+        """This function provides the ability to print the vector and
+        limit it to 3 digit precision.
         """
-        return "Vector {} ".format(self.coordinates)
+        st = ",".join(format(val, ".3f") for val in self.coordinates)
+        st = "(" + st + ")"
+        return "Vector {} ".format(st)
 
     def __eq__(self, v):
         """ This function returns true if the vector object passed in has
@@ -52,7 +55,7 @@ class Vector(object):
         for index, val in enumerate(self.coordinates):
             ret.append((val + v.coordinates[index]))
 
-        return ret
+        return Vector(ret)
 
     def sub(self, v):
         """This function returns the subract of 2 vectors if they are of same
@@ -65,7 +68,7 @@ class Vector(object):
         for index, val in enumerate(self.coordinates):
             ret.append((val - v.coordinates[index]))
 
-        return ret
+        return Vector(ret)
 
     def scalar_mult(self, v):
         """This function is scalar multiplication of the vector and number.
@@ -76,7 +79,7 @@ class Vector(object):
         for val in self.coordinates:
             ret.append((val * v))
 
-        return ret
+        return Vector(ret)
 
     def magnitude(self):
         """This function calculates magnitude of vector"""
@@ -127,14 +130,14 @@ class Vector(object):
     def projection(self, v):
         """This function returns projection of V on self"""
 
-        a = Vector(self.normalization())
+        a = (self.normalization())
         return a.scalar_mult(v.dotproduct(a))
 
     def orthogonal_vec(self, v):
         """ The orthogonal vector is vparallel + vorthogonal = v """
 
 
-        return v.sub(Vector(self.projection(v)))
+        return v.sub((self.projection(v)))
 
     def cross_product_3d(self, v):
         """ This gives the cross product of 3d vectors """
